@@ -27,7 +27,7 @@ class HomeApp extends StatefulWidget {
 }
 
 class _HomeAppState extends State<HomeApp> {
-  //choosing the game word
+  //Game word list
   List<String> wordList = ["FLUTTER","PROGRAMMING","CLASS","SCHOOL",
     "FUTURE", "LANGUAGE","CARRIER","BILL","MOTHER","ARGUE","HANGMAN","GROW","VOTING","SHUT",
     "PILL", "OPPOSED","FLAG","RACE","SPEED","BIAS","HERSELF","DOUGH","RELEASE","SUBJECT",
@@ -35,7 +35,7 @@ class _HomeAppState extends State<HomeApp> {
     "BRICK","SURVIVE","LEADING","STAKE","NERVE","INTENSE","SUSPECT","WHEN","LIE",
     "SPOILED","ANALYSE","VARIANCE","ROLLING","MEANING","RESPECT","PLURAL"];
 
-  //Create a list that contains the Alphabet, or you can just copy and paste it
+  //Alphabet
   List<String> alphabets = [
     "A",
     "B",
@@ -81,25 +81,18 @@ class _HomeAppState extends State<HomeApp> {
           Center(
             child: Stack(
               children: [
-                //let's make the figure widget
-                //let's add the images to the asset folder
-                //Okey now we will create a Game class
-                //Now the figure will be built according to the number of tries
-                figureImage(Game.tries >= 0, "assets/hang.png"),
-                figureImage(Game.tries >= 1, "assets/head.png"),
-                figureImage(Game.tries >= 2, "assets/body.png"),
-                figureImage(Game.tries >= 3, "assets/ra.png"),
-                figureImage(Game.tries >= 4, "assets/la.png"),
-                figureImage(Game.tries >= 5, "assets/rl.png"),
-                figureImage(Game.tries >= 6, "assets/ll.png"),
+               // Figure widget
+                figureImage(Game.tries >= 0, "images/hang.png"),
+                figureImage(Game.tries >= 1, "images/head.png"),
+                figureImage(Game.tries >= 2, "images/body.png"),
+                figureImage(Game.tries >= 3, "images/ra.png"),
+                figureImage(Game.tries >= 4, "images/la.png"),
+                figureImage(Game.tries >= 5, "images/rl.png"),
+                figureImage(Game.tries >= 6, "images/ll.png"),
               ],
             ),
           ),
 
-          //Now we will build the Hidden word widget
-          //now let's go back to the Game class and add
-          // a new variable to store the selected character
-          /* and check if it's on the word */
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: wordList
@@ -109,7 +102,7 @@ class _HomeAppState extends State<HomeApp> {
                 .toList(),
           ),
 
-          //Now let's build the Game keyboard
+          //the Game keyboard
           SizedBox(
             width: double.infinity,
             height: 250.0,
@@ -121,7 +114,7 @@ class _HomeAppState extends State<HomeApp> {
               children: alphabets.map((e) {
                 return RawMaterialButton(
                   onPressed: Game.selectedChar.contains(e)
-                      ? null // we first check that we didn't selected the button before
+                      ? null
                       : () {
                     setState(() {
                       Game.selectedChar.add(e);
